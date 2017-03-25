@@ -1,8 +1,6 @@
 package org.hameister.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import org.hameister.ItemStoreApplication;
 import org.hameister.model.Item;
 import org.hameister.service.ItemService;
