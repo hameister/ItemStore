@@ -1,0 +1,16 @@
+schema {
+ query : Query
+}
+
+type Query {
+ allItems: [Item]
+ item(id: Long): Item
+ itemByDescription(description: String): [Item]
+}
+
+type Item {
+ id : Long
+ description: String
+ location: String
+ formattedDate: String
+}

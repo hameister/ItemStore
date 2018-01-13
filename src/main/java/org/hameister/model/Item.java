@@ -39,6 +39,8 @@ public class Item {
     @Column(name = "itemdate")
     private LocalDate itemdate;
 
+    private transient  String formattedDate;
+
 
     public String getDescription() {
         return description;
@@ -70,5 +72,9 @@ public class Item {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getFormattedDate() {
+        return getItemdate().toString();
     }
 }
