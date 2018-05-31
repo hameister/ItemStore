@@ -24,6 +24,30 @@ public class SearchQueryBuilder {
         this.elasticsearchTemplate = elasticsearchTemplate;
     }
 
+
+    /*
+    Query in Json format. Only description ans location are used for the search.
+    SEARCHTEXT is can be for example: 'Tas Reg'
+    This SEARCHTEXT will find all Tassen in Regals.
+            {
+          "bool" : {
+            "should" : [ {
+              "query_string" : {
+                "query" : "SEARCHTEXT",
+                "fields" : [ "description", "location" ],
+                "lenient" : true
+              }
+            }, {
+              "query_string" : {
+                "query" : "*SEARCHTEXT*",
+                "fields" : [ "description", "location" ],
+                "lenient" : true
+              }
+            } ]
+          }
+        }
+     */
+
     public List<Item> getAll(String text) throws IOException {
 
         QueryBuilder query = QueryBuilders.boolQuery()
@@ -41,13 +65,8 @@ public class SearchQueryBuilder {
                 .withQuery(query)
                 .build();
 
-        ElasticConfiguration elasticConfiguration = new ElasticConfiguration();
 
-        //ElasticsearchOperations elasticsearchOperations = elasticConfiguration.elasticsearchTemplate();
-
-        List<Item> items = elasticsearchTemplate.queryForList(build, Item.class);
-
-        return items;
+        return elasticsearchTemplate.queryForList(build, Item.class);
     }
 
 
