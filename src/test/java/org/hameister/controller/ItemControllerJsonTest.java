@@ -2,6 +2,7 @@ package org.hameister.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hameister.ItemStoreApplication;
+import org.hameister.elastic.ElasticConfiguration;
 import org.hameister.model.Item;
 import org.hameister.service.ItemService;
 import org.junit.Before;
@@ -9,9 +10,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.boot.test.json.JsonContent;
+import org.springframework.context.annotation.Import;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;

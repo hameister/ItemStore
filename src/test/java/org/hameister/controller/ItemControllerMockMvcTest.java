@@ -2,6 +2,7 @@ package org.hameister.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hameister.ItemStoreApplication;
+import org.hameister.elastic.ElasticConfiguration;
 import org.hameister.model.Item;
 import org.hameister.service.ItemService;
 import org.junit.Test;
@@ -9,13 +10,17 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Import;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.mock.http.MockHttpOutputMessage;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
@@ -39,6 +44,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @RunWith(SpringRunner.class)
 @AutoConfigureMockMvc
+@Import(ElasticConfiguration.class)
+@EnableJpaRepositories(basePackages = "org.hameister.repository")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, classes = ItemStoreApplication.class)
 public class ItemControllerMockMvcTest {
 
@@ -51,7 +58,7 @@ public class ItemControllerMockMvcTest {
 
     /*
 
-    Man ruft die REST-Schnittstelle auf und der Aufruf wird an den Service-Mopck weitergeleitet.
+    Man ruft die REST-Schnittstelle auf und der Aufruf wird an den Service-Mock weitergeleitet.
     Findet nur ein Delegate statt, kann man über den Sinn diskutieren, aber es wird auf alle
     Faelle das Verhalten der REST-Schnittstelle überprüft und definiert.
      */

@@ -1,5 +1,8 @@
 package org.hameister.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.elasticsearch.annotations.Document;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -8,6 +11,7 @@ import java.time.LocalDate;
  */
 @Entity
 @Table(name = "Item")
+@Document(indexName = "items", type = "items", shards = 1)
 public class Item {
 
     public Item() {
@@ -36,6 +40,7 @@ public class Item {
     @Column(name = "location")
     private  String location;
 
+    @JsonIgnore
     @Column(name = "itemdate")
     private LocalDate itemdate;
 
