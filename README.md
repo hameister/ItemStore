@@ -1,13 +1,14 @@
 # ItemStore
 Originally the example code for an article in the JavaMagazin. (branch/master)
 In branch **graphql** extended by a GraphQL interface.
+In branch **elastic** extended by an Elsticsearch interface.
 
 # Build and run tests with
 `mvn clean install`
 
 
 # Description
-Further descriptions of the source code can be found here: [Spring Boot GraphQL](http://www.hameister.org/SpringBootGraphQL.html).
+Further descriptions of the source code can be found here: [Spring Boot GraphQL](http://www.hameister.org/SpringBootGraphQL.html) and here: [Spring Boot Elasticsearch](http://www.hameister.org/SpringBootElasticsearch.html).
 
 
 # Disclaimer
