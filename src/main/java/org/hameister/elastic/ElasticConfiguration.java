@@ -28,7 +28,7 @@ public class ElasticConfiguration {
         File tmpDir = new File(String.valueOf(System.currentTimeMillis()));
         Settings.Builder elasticsearchSettings =
                 Settings.settingsBuilder()
-                        .put("http.enabled", "true") // 1
+                        .put("http.enabled", "true")
                         .put("index.number_of_shards", "1")
                         .put("path.data", new File(tmpDir, "data").getAbsolutePath())
                         .put("path.logs", new File(tmpDir, "logs").getAbsolutePath())

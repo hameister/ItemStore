@@ -34,8 +34,6 @@ public class ItemMigrator {
     @PostConstruct
     @Transactional
     public void loadAll() {
-        Item item = new Item("Description", "Regal A", LocalDate.now());
-        Item save = repository.save(item);
         Iterable<Item> items = repository.findAll();
         operations.putMapping(Item.class);
         elasticUsersRepository.save(items);
