@@ -38,7 +38,14 @@ public class ItemJson {
             System.out.println("deserializeObject");
             String description = tree.get("description").asText();
             String location = tree.get("location").asText();
-            return new Item(1l,description, location, null);
+            long id;
+            if (tree.has("id")) {
+                 id = tree.get("id").asLong();
+                return new Item(id, description, location, null);
+            }
+
+            return new Item(description, location, null);
         }
+
     }
 }
