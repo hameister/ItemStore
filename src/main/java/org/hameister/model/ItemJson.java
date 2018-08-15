@@ -39,7 +39,7 @@ public class ItemJson {
             String description = tree.get("description").asText();
             String location = tree.get("location").asText();
             long id;
-            if (tree.has("id")) {
+            if (tree.has("id") && tree.get("id").asLong()!=0) {
                  id = tree.get("id").asLong();
                 return new Item(id, description, location, null);
             }
